@@ -12,11 +12,16 @@ double get_current_timecount() {
  
 
 int main(int argc, char** argv) {
+	double t1 = get_current_timecount();
 
 	int sock;
 	char buf[1024];
 	FILE* fp;
 	int ret;
+	struct sockaddr addr;
+	int len;
+	int socket;
+	
 
 	if(argc != 3) {
 		printf("usage: %s [ip address] [filename]\n", argv[0]);
@@ -24,18 +29,20 @@ int main(int argc, char** argv) {
 	}
 
 	sock = exp1_tcp_connect(argv[1], 11111);
+	printf("%d\n",sock);
 	fp = fopen(argv[2], "r");
-	ret = fread(buf, sizeof(char), 1024, fp);
-
-	double t1 = get_current_timecount();
+	printf("No1\n");
+	printf("%d\n",ret);
+	printf("No2\n");
 	while(ret > 0) {
-		send(sock, buf, ret, 0);
-		ret = fread(buf, sizeof(char), 1024, fp);
+		send(sock, buf, 1024, 0);
+		printf("No3\n");
+		ret = recv(sock, buf, 1024, 0);
+		printf("No4\n");
 	}
+	close(sock);
 
     double t2 = get_current_timecount();
-	close(sock);
     printf("%lf\n", t2-t1);
     return 0;
 }
-
