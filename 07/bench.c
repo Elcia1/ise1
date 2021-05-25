@@ -30,7 +30,7 @@ void* exp1_eval_thread(void* param)
    fileid = *pfileid;
    free(pfileid);
  
-   sock = exp1_tcp_connect(g_hostname, "10022");
+   sock = exp1_tcp_connect(g_hostname, "80");
    if(sock < 0){
      exp1_session_error();
      pthread_exit(NULL);

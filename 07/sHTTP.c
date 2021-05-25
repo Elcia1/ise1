@@ -224,7 +224,7 @@ int main(int argc, char **argv)
 {
   int sock_listen;
 
-  sock_listen = exp1_tcp_listen("10022");
+  sock_listen = exp1_tcp_listen(10022);
 
   while(1){
     struct sockaddr addr;
