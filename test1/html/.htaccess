@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "a6"
+AuthUserFile /192.168.1.101/.htpasswd
+require valid-user
